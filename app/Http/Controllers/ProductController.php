@@ -17,6 +17,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller 
 {   
@@ -30,8 +32,12 @@ public function __construct(){
 
 public function getProducts(){
 
+    $cache = Cache::get('key');
+    // DB::connection()->enableQueryLog();
     $products = Products::all();//  fetch  all data from products table db and give it 											to produsts variable 
-	return view('shop.index',['products'=> $products]);//give itto url varible prodcts
+    // .
+
+	return view('shop.index',['products'=> $products , 'cache' => $cache]);//give itto url varible prodcts
     }
 
     //MINIMIZE  addToCart()  by master 
@@ -120,6 +126,7 @@ public function updateCart(Request $request){
     
     $user = Auth::user();
     $userId = $user->id ;
+    
 
     if(!empty($request->cartId  AND  $request->productQuantity)){ // coming from ajax
 

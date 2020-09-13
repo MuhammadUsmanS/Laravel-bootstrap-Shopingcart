@@ -6,25 +6,6 @@
 
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
      <ul class="navbar-nav mr-auto">
-    {{-- <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li> 
-      <li class="nav-item">
-        <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i>
-
- shoping cart</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-user"></i> User Account
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">User Account</a>
-          <a class="dropdown-item" href="#">Logout</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a> 
-        </div>
-      </li>--}}
     </ul> 
 
 <style>
@@ -36,8 +17,18 @@
 </style>
 
      <div class="navigation" class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
+
     <ul class="navbar-nav mr-auto">
 
+      <li >
+      
+      </li>
+
+      
+      
+              
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-user"></i> Admin
@@ -64,10 +55,16 @@
           @if(Auth::guard('web')->check())
           <a class="dropdown-item" href="{{ route('user.logout') }}">Logout</a>
           <a class="dropdown-item" href="{{ route('user.dashboard') }}">Dashboard</a>
+          <a class="dropdown-item" href="{{ route('fb.login') }}" >
+            <strong>Facebook login </strong>
+          </a>
 
           @else
           <a class="dropdown-item" href="{{ route('user.signup') }}">Sign Up</a>
           <a class="dropdown-item" href="{{ route('user.login') }}">Sign In</a>
+          <a class="dropdown-item" href="{{ route('fb.login') }}" >
+            <strong>Logged In</strong>
+          </a>
 
           @endif
 

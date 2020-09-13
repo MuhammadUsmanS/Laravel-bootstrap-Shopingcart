@@ -8,7 +8,7 @@
 {{-- ////////////////notify//////////////// --}}
 <center>
 @if(session()->has('success'))
-        <div class="alert alert-success">
+        <div class="alert alert-success ">
 	            <strong>Notification:</strong> {{ session()->get('success') }} 
         </div>
 @endif
@@ -53,6 +53,8 @@
 		    <h3>
 		    <a  href="{{(route('product.detail',['productId'=>$product->id]))}}">
 		    	{{$product->title}}
+		    	{{$cache}}
+		    	
 		    </a>
 		    </h3>
 		    <p class="description"><justify>{{$product->description}}</justify></p>

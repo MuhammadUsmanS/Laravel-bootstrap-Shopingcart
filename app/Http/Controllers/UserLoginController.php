@@ -12,7 +12,7 @@ class UserLoginController extends Controller
 
 	public function __construct(){
 
-  $this->middleware('guest:web', ['except'=> ['logout']]);
+  $this->middleware('guest:web', ['except'=> ['logout' , 'login']]);
 	// $this->middleware('guest:admin', ['except'=>['logout']]);
 
 	}
@@ -24,13 +24,17 @@ class UserLoginController extends Controller
 
     public function loginForm(Request $request)
     {
+      // dd($request->route()->getActionMethod());
+
+      // $userIP = $request->ip();
+      // dd($userIP) ;
     	
     	//validate the form data 
     $this->validate($request , [
    		'email' => 'required|email',
    		'password'=> 'required|min:6'
    		]);
-
+      
 	//attempt to log the user in
    	// i.e Auth::attempt->$credential->$remeber;
    	if(Auth::guard('web')->attempt(['email'=>$request->email , 'password'=>$request->password],$request->remember))

@@ -30,6 +30,8 @@ Route::group(['prefix' => 'shophere'],function(){
 	Route::get('/','ProductController@getProducts')->name('products');
 	Route::get('/index','ProductController@getProducts')->name('products');
 	Route::get('/productDetail/{productId}','ProductController@productDetail')->name('product.detail');
+
+
 //////////////////////cart Products///////////////////////////////////////	
 	Route::get('/addToCart/{productId}','ProductController@addToCart')->name('products.addtocart');
 //////////////////////////////////////////////////////////////////
@@ -42,6 +44,16 @@ Route::group(['prefix' => 'shophere'],function(){
 
 	Route::get('userLogout' , 'UserLoginController@logout')->name('user.logout');
 	Route::get('/userProfile','UserController@index')->name('user.dashboard');
+
+
+////////Facebook Login Routes/////////////////////////////////////
+
+// Route::get('facebook', function () {
+//     return view('facebook');
+// });
+
+Route::get('auth/facebook', 'FacebookController@redirectToFacebook')->name('fb.login');
+Route::get('auth/facebook/callback','FacebookController@handleFacebookCallback');
 
 /////////////////cart/////////////////////////////////////////////
 

@@ -24,7 +24,7 @@ class UserRegisterController extends Controller
     	$this->validate($request , [
     			'name'   => 'required|max:255',
     			'email'  =>  'email|required|unique:users',
-    			'password'=> 'required|min:4'
+    			'password'=> 'required|confirmed|min:4'
     			    				]) ; 
 
     	$create_user =  User::create([
